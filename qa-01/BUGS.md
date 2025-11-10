@@ -14,6 +14,7 @@ Poniżej znajduje się zestawienie najważniejszych problemów celowo umieszczon
 10. **Reset** – przycisk usuwa dane spod klucza `shipping_form`, lecz panel nadal pozostaje pusty, bo i tak nie odczytuje poprawnych danych (`app.js`).
 11. **Brak walidacji warunku dla paczki delikatnej** – wymagania mówią o konieczności wspomnienia o delikatności w polu instrukcji, ale kod tego nie sprawdza (`app.js`).
 12. **Brak informacji o wartości paczki** – wymagania dotyczące progów ubezpieczenia nie mogą być zweryfikowane, bo formularz nie ma pola na wartość przesyłki (`index.html`, `README.md`).
+13. **Kalkulator kosztu przesyłki** – obliczenia odejmują 1 kg od faktycznej wagi (zmienna `effectiveWeight`), więc pokazana kwota jest zaniżona przy większości wartości (`app.js`).
 
 Lista nie obejmuje drobnych problemów kosmetycznych; kandydat może znaleźć dodatkowe rozbieżności.***
 

@@ -75,6 +75,33 @@ textarea {
   color: #000;
 }
 
+.cost-summary {
+  margin: 2rem 0 1rem;
+  padding: 1.25rem;
+  border-radius: 16px;
+  background: rgba(76, 111, 255, 0.08);
+  border: 1px solid rgba(76, 111, 255, 0.25);
+}
+
+.cost-summary h2 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.cost-value {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+  color: #1f2333;
+}
+
+.cost-note {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #4c5a7b;
+}
+
 input:focus,
 select:focus,
 textarea:focus {

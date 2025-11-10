@@ -2,6 +2,20 @@ const form = document.getElementById("shipping-form");
 const statusNode = document.querySelector(".save-status");
 const savedOutput = document.getElementById("saved-output");
 const resetButton = document.getElementById("reset");
+const costValueNode = document.getElementById("shipping-cost");
+
+const COST_RULES = {
+  documents: { base: 15, perKg: 2 },
+  standard: { base: 18, perKg: 3.2 },
+  fragile: { base: 26, perKg: 4.5, fragileFee: 8 },
+  oversized: { base: 42, perKg: 5.5 },
+};
+
+const INSURANCE_FEES = {
+  none: 0,
+  basic: 9.5,
+  premium: 21,
+};
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -167,6 +181,48 @@ function showSavedData() {
   }
 }
 
+function updateCostPreview() {
+  if (!costValueNode) {
+    return;
+  }
+
+  const formData = new FormData(form);
+  const amount = calculateCost(formData);
+
+  if (amount === null) {
+    costValueNode.textContent = "--";
+    return;
+  }
+
+  costValueNode.textContent = `${amount.toFixed(2)} zł`;
+}
+
+function calculateCost(formData) {
+  const type = formData.get("packageType");
+  const insurance = formData.get("insurance") || "none";
+  const weight = parseFloat(formData.get("weight"));
+
+  if (!type || Number.isNaN(weight) || weight <= 0) {
+    return null;
+  }
+
+  const baseRates = COST_RULES[type];
+  if (!baseRates) {
+    return null;
+  }
+
+  const insuranceFee = INSURANCE_FEES[insurance] ?? 0;
+
+  const effectiveWeight = Math.max(weight - 1, 0);
+  let cost = baseRates.base + effectiveWeight * baseRates.perKg + insuranceFee;
+
+  if (type === "fragile" && baseRates.fragileFee) {
+    cost += baseRates.fragileFee;
+  }
+
+  return Math.round(cost * 100) / 100;
+}
+
 function resetForm() {
   form.reset();
   clearErrors();
@@ -174,6 +230,7 @@ function resetForm() {
   statusNode.classList.remove("error", "success");
   localStorage.removeItem("shipping_form");
   showSavedData();
+  updateCostPreview();
 }
 
 form.addEventListener("submit", handleSubmit);
@@ -181,5 +238,28 @@ resetButton.addEventListener("click", resetForm);
 
 document.addEventListener("DOMContentLoaded", () => {
   showSavedData();
+  updateCostPreview();
+});
+
+form.addEventListener("input", (event) => {
+  const target = event.target;
+  if (!target || !target.name) {
+    return;
+  }
+
+  if (["packageType", "insurance", "weight"].includes(target.name)) {
+    updateCostPreview();
+  }
+});
+
+form.addEventListener("change", (event) => {
+  const target = event.target;
+  if (!target || !target.name) {
+    return;
+  }
+
+  if (["packageType", "insurance", "weight"].includes(target.name)) {
+    updateCostPreview();
+  }
 });
 
