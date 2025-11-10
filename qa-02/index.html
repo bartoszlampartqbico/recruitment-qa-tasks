@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zgłoszenie do windykacji</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="header">
+        <h2>Zadanie rekrutacyjne QA-02</h2>
+        <h1>Zgłoszenie firmy do windykacji</h1>
+        <p>
+          Wybierz firmę z listy i uzupełnij dane przekazania do windykacji.
+          Użyj przycisku „Podgląd zgłoszenia”, aby zobaczyć podsumowanie.
+        </p>
+      </header>
+
+      <section class="card">
+        <form id="collection-form" novalidate>
+          <fieldset>
+            <legend>Krok 1. Wybór firmy dłużnika</legend>
+            <div id="company-list" class="company-list"></div>
+            <p class="hint">
+              Informacje o firmach są przykładowe i służą jedynie celom zadania.
+            </p>
+            <div id="company-details" class="company-details" aria-live="polite">
+              <p>Nie wybrano firmy.</p>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Krok 2. Szczegóły zadłużenia</legend>
+            <div class="form-row">
+              <label for="debt-amount">Kwota zadłużenia (PLN)</label>
+              <input
+                type="number"
+                id="debt-amount"
+                name="debtAmount"
+                min="0"
+                step="0.01"
+                placeholder="np. 12500"
+                required
+              />
+            </div>
+            <div class="form-row">
+              <label for="debt-reference">Numer umowy / faktury</label>
+              <input
+                type="text"
+                id="debt-reference"
+                name="debtReference"
+                placeholder="np. FV-2024/09/17"
+                maxlength="40"
+              />
+            </div>
+            <div class="form-row">
+              <label>Zajęte zasoby</label>
+              <div class="checkbox-grid">
+                <label>
+                  <input type="checkbox" name="assets" value="Środki pieniężne" />
+                  Środki pieniężne
+                </label>
+                <label>
+                  <input type="checkbox" name="assets" value="Sprzęt firmowy" />
+                  Sprzęt firmowy
+                </label>
+                <label>
+                  <input type="checkbox" name="assets" value="Nieruchomości" />
+                  Nieruchomości
+                </label>
+                <label>
+                  <input type="checkbox" name="assets" value="Wierzytelności" />
+                  Wierzytelności
+                </label>
+                <label>
+                  <input type="checkbox" name="assets" value="Inne" />
+                  Inne
+                </label>
+              </div>
+            </div>
+            <div class="form-row">
+              <label for="debt-notes">Uwagi dla analityka</label>
+              <textarea
+                id="debt-notes"
+                name="debtNotes"
+                rows="3"
+                placeholder="Dodatkowe informacje o zadłużeniu"
+              ></textarea>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Krok 3. Dane firmy windykacyjnej</legend>
+            <div class="form-row">
+              <label for="agency-name">Nazwa firmy windykacyjnej</label>
+              <input
+                type="text"
+                id="agency-name"
+                name="agencyName"
+                placeholder="np. Windykator Sp. z o.o."
+                required
+              />
+            </div>
+            <div class="form-row">
+              <label for="contact-person">Osoba kontaktowa</label>
+              <input
+                type="text"
+                id="contact-person"
+                name="contactPerson"
+                placeholder="Imię i nazwisko"
+              />
+            </div>
+            <div class="form-row">
+              <label for="contact-method">Preferowany kontakt</label>
+              <select id="contact-method" name="contactMethod">
+                <option value="">Wybierz opcję</option>
+                <option value="Telefon">Telefon</option>
+                <option value="E-mail">E-mail</option>
+                <option value="Spotkanie">Spotkanie</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="collection-start">Planowana data rozpoczęcia</label>
+              <input type="date" id="collection-start" name="collectionStart" />
+            </div>
+            <div class="form-row">
+              <label for="attachments">Załączniki (symulacja)</label>
+              <input
+                type="text"
+                id="attachments"
+                name="attachments"
+                placeholder="np. Umowa.pdf, Protokół.docx"
+              />
+            </div>
+          </fieldset>
+
+          <div class="form-actions">
+            <button type="button" id="preview-button">Podgląd zgłoszenia</button>
+            <button type="submit">Wyślij zgłoszenie</button>
+          </div>
+
+          <div id="message-area" aria-live="assertive"></div>
+        </form>
+      </section>
+
+      <section class="card" id="preview-card" hidden>
+        <h2>Podgląd zgłoszenia</h2>
+        <p>Sprawdź dane przed wysłaniem.</p>
+        <dl id="preview-content"></dl>
+        <button type="button" id="close-preview">Zamknij podgląd</button>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <small>Aplikacja demonstracyjna dla zadania rekrutacyjnego. Qbico sp. z o.o.</small>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+

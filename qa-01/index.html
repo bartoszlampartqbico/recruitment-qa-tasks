@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formularz wysyłki - Zadanie rekrutacyjne</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h2>Zadanie rekrutacyjne QA-01</h2>
+      <h1>Formularz przygotowania wysyłki</h1>
+      <p class="intro">
+        Wypełnij formularz, aby zarejestrować wysyłkę. Wszystkie pola są
+        wymagane.
+      </p>
+
+      <form id="shipping-form" novalidate>
+        <section class="form-section">
+          <h2>Dane kontaktowe</h2>
+          <div class="field">
+            <label for="fullName">Imię i nazwisko</label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              placeholder="Jan Kowalski"
+              required
+            />
+            <span class="error" data-error-for="fullName"></span>
+          </div>
+
+          <div class="field">
+            <label for="email">Adres e-mail</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="jan.kowalski@example.com"
+              required
+            />
+            <span class="error" data-error-for="email"></span>
+          </div>
+
+          <div class="field">
+            <label for="phone">Numer telefonu</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="+48 123 456 789"
+              required
+            />
+            <span class="error" data-error-for="phone"></span>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <h2>Adres i termin</h2>
+          <div class="field">
+            <label for="street">Ulica i numer</label>
+            <input
+              type="text"
+              id="street"
+              name="street"
+              placeholder="ul. Kwiatowa 10"
+              required
+            />
+            <span class="error" data-error-for="street"></span>
+          </div>
+
+          <div class="field half">
+            <label for="postalCode">Kod pocztowy</label>
+            <input
+              type="text"
+              id="postalCode"
+              name="postalCode"
+              placeholder="00-000"
+              required
+            />
+            <span class="error" data-error-for="postalCode"></span>
+          </div>
+
+          <div class="field half">
+            <label for="city">Miasto</label>
+            <input
+              type="text"
+              id="city"
+              name="city"
+              placeholder="Warszawa"
+              required
+            />
+            <span class="error" data-error-for="city"></span>
+          </div>
+
+          <div class="field">
+            <label for="pickupDate">Preferowana data odbioru</label>
+            <input type="date" id="pickupDate" name="pickupDate" required />
+            <span class="error" data-error-for="pickupDate"></span>
+          </div>
+
+          <div class="field">
+            <label for="packageType">Rodzaj paczki</label>
+            <select id="packageType" name="packageType" required>
+              <option value="">-- Wybierz --</option>
+              <option value="documents">Dokumenty</option>
+              <option value="fragile">Delikatna</option>
+              <option value="standard">Standardowa</option>
+              <option value="oversized">Gabarytowa</option>
+            </select>
+            <span class="error" data-error-for="packageType"></span>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <h2>Dodatkowe informacje</h2>
+          <fieldset class="field">
+            <legend>Ubezpieczenie przesyłki</legend>
+            <label class="inline">
+              <input type="radio" name="insurance" value="none" checked />
+              Brak
+            </label>
+            <label class="inline">
+              <input type="radio" name="insurance" value="basic" />
+              Podstawowe (do 1000 zł)
+            </label>
+            <label class="inline">
+              <input type="radio" name="insurance" value="premium" />
+              Premium (do 5000 zł)
+            </label>
+            <span class="error" data-error-for="insurance"></span>
+          </fieldset>
+
+          <div class="field">
+            <label for="weight">Waga paczki (kg)</label>
+            <input
+              type="number"
+              id="weight"
+              name="weight"
+              min="0"
+              max="100"
+              step="0.1"
+              placeholder="np. 2.5"
+              required
+            />
+            <span class="error" data-error-for="weight"></span>
+          </div>
+
+          <div class="field">
+            <label for="notes">Instrukcje dla kuriera</label>
+            <textarea
+              id="notes"
+              name="notes"
+              rows="4"
+              placeholder="np. proszę dzwonić domofonem nr 12"
+              required
+            ></textarea>
+            <span class="error" data-error-for="notes"></span>
+          </div>
+        </section>
+
+        <div class="field checkbox-field">
+          <label>
+            <input type="checkbox" id="terms" name="terms" />
+            Zapoznałem(-am) się z regulaminem i polityką prywatności.
+          </label>
+          <span class="error" data-error-for="terms"></span>
+        </div>
+
+        <div class="actions">
+          <button type="submit">Wyślij zgłoszenie</button>
+          <button type="button" id="reset">Wyczyść formularz</button>
+        </div>
+
+        <p class="save-status" aria-live="polite"></p>
+      </form>
+
+      <aside class="saved-data">
+        <h2>Ostatnie zapisane zgłoszenie</h2>
+        <pre id="saved-output">Brak zapisanych danych.</pre>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <small>Aplikacja demonstracyjna dla zadania rekrutacyjnego. Qbico sp. z o.o.</small>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
+
