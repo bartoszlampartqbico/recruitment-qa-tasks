@@ -3,110 +3,68 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zadanie QA-03 – Walidacja zapytań SQL</title>
+    <title>Zadanie QA-03 – Analiza SQL</title>
     <link rel="stylesheet" href="styles.css" />
-    <script
-      defer
-      src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"
-      integrity="sha512-MV8Ko6VM1Y8tSvyMDeFf0TfaEsd/ulyJb57J5hUGNrT9vApTPy330VxkiX6HYKpZf0p4YJ3B7JLLalfMyyJxVQ=="
-      crossorigin="anonymous"
-    ></script>
-    <script defer src="script.js"></script>
   </head>
   <body>
     <main class="layout">
-      <section class="panel info">
-        <header>
-          <h1>Zadanie QA-03 — Walidacja zapytań SQL</h1>
-          <p class="intro">
-            Wykorzystaj zapytania SQL, aby uzyskać poprawne wyniki dla zadań
-            poniżej. Dane testowe są osadzone w przeglądarce (SQLite uruchomione
-            przez <code>sql.js</code>) i nie wymagają dodatkowej konfiguracji.
-          </p>
-        </header>
+      <header class="page-header">
+        <h1>Zadanie QA-03 — Analiza zapytań SQL</h1>
+        <p>
+          Twoim zadaniem jest przygotowanie zapytań SQL na podstawie schematu
+          bazy danych i przykładowych danych zaprezentowanych na grafice.
+          Zapytania powinieneś przygotować we własnym środowisku (np. edytor
+          tekstu, ulubione narzędzie bazodanowe) i przesłać nam mailowo.
+        </p>
+      </header>
 
-        <article class="card schema">
-          <h2>Schemat danych</h2>
-          <ul>
-            <li>
-              <strong>departments</strong> (<code>id</code>, <code>name</code>)
-            </li>
-            <li>
-              <strong>employees</strong> (<code>id</code>, <code>first_name</code>, <code>last_name</code>, <code>department_id</code>, <code>salary</code>)
-            </li>
-            <li>
-              <strong>timesheets</strong> (<code>id</code>, <code>employee_id</code>, <code>project_name</code>, <code>hours</code>)
-            </li>
-          </ul>
-          <p class="hint">
-            Wszystkie tabele są już wypełnione przykładowymi danymi — możesz je
-            podejrzeć wykonując proste zapytania typu
-            <code>SELECT * FROM employees;</code>
-          </p>
-        </article>
-
-        <article class="card tasks">
-          <h2>Zadania</h2>
-          <ol>
-            <li>
-              <strong>Lista pracowników z działami</strong> — zwróć pełne imię i
-              nazwisko pracownika, nazwę działu oraz pensję. Posortuj wynik
-              rosnąco po nazwie działu, a w ramach działu po nazwisku.
-            </li>
-            <li>
-              <strong>Średnie wynagrodzenie w działach</strong> — policz średnią
-              pensję oraz liczbę pracowników na dział. Wyświetl jedynie działy z
-              co najmniej 2 pracownikami i posortuj malejąco po średniej pensji.
-            </li>
-            <li>
-              <strong>Duże projekty</strong> — zwróć nazwę działu, nazwę projektu
-              i łączną liczbę godzin przepracowanych przez pracowników tego
-              działu w projekcie. Uwzględnij projekty, w których przepracowano
-              ponad 40 godzin, i posortuj wynik malejąco po liczbie godzin.
-            </li>
-          </ol>
-        </article>
+      <section class="card">
+        <h2>Schemat i dane przykładowe</h2>
+        <p>
+          Poniższa ilustracja zawiera strukturę tabel oraz próbkę danych, które
+          należy wykorzystać podczas przygotowywania zapytań.
+        </p>
+        <figure class="schema-figure">
+          <img
+            src="assets/schema.svg"
+            alt="Schemat bazy danych i przykładowe dane dla zadań SQL"
+          />
+          <figcaption>
+            Struktura tabel <code>departments</code>, <code>employees</code> oraz
+            <code>timesheets</code> wraz z przykładowymi wierszami.
+          </figcaption>
+        </figure>
+        <p class="hint">
+          Jeśli wolisz odtworzyć dane lokalnie, możesz pobrać skrypt
+          <a href="sample-data.sql" download>sample-data.sql</a>
+          i załadować go do swojej bazy.
+        </p>
       </section>
 
-      <section class="panel runner">
-        <header class="card">
-          <h2>Edytor SQL</h2>
-          <p class="hint">
-            Wybierz zadanie, napisz zapytanie i kliknij “Uruchom zapytanie”. Wynik
-            pojawi się w tabeli poniżej.
-          </p>
-          <label class="task-selector">
-            <span>Oceniamy zapytanie względem zadania:</span>
-            <select id="task-select" aria-label="Wybierz zadanie do walidacji">
-              <option value="task-1">1 — Lista pracowników z działami</option>
-              <option value="task-2">2 — Średnie wynagrodzenie w działach</option>
-              <option value="task-3">3 — Duże projekty</option>
-            </select>
-          </label>
-        </header>
-
-        <form class="card editor" id="sql-form">
-          <textarea
-            id="sql-input"
-            name="sql"
-            rows="10"
-            aria-label="Pole edycji zapytania SQL"
-            placeholder="SELECT ..."
-          ></textarea>
-          <div class="actions">
-            <button type="submit" class="primary">Uruchom zapytanie</button>
-            <button type="button" id="check-button">Porównaj z wzorcowym wynikiem</button>
-            <button type="button" id="reset-button" class="ghost">Wyczyść</button>
-          </div>
-          <p class="status" id="status-message" role="status" aria-live="polite"></p>
-        </form>
-
-        <section class="card results" aria-live="polite">
-          <h3>Wynik zapytania</h3>
-          <div id="result-table" class="table-placeholder">
-            <p>Brak wyników. Uruchom zapytanie, aby zobaczyć dane.</p>
-          </div>
-        </section>
+      <section class="card">
+        <h2>Polecenia dla kandydata</h2>
+        <ol class="tasks">
+          <li>
+            <strong>Lista pracowników z działami:</strong> przygotuj zapytanie,
+            które zwróci pełne imię i nazwisko pracownika, nazwę działu oraz
+            wynagrodzenie. Posortuj wynik rosnąco po nazwie działu, a następnie po
+            nazwisku.
+          </li>
+          <li>
+            <strong>Średnie wynagrodzenie w działach:</strong> oblicz średnią pensję
+            i liczbę pracowników dla każdego działu. Posortuj wynik malejąco po średnim
+            wynagrodzeniu.
+          </li>
+          <li>
+            <strong>Projekty o dużym nakładzie pracy:</strong> zwróć nazwę działu,
+            nazwę projektu oraz łączną liczbę przepracowanych godzin (interesuje nas liczba godzin w projekcie poświęcona przez dany dział). Pokaż tylko
+            projekty, w których suma godzin przekracza 40, i posortuj wynik
+            malejąco po liczbie godzin.
+          </li>
+        </ol>
+        <p class="hint">
+          Zapytania SQL zapisz w jednym dokumencie (np. plik tekstowy, PDF) i wyślij do nas wraz z rozwiązaniami pozostałych zadań.
+        </p>
       </section>
     </main>
 

@@ -1,0 +1,96 @@
+<svg width="1024" height="720" viewBox="0 0 1024 720" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cardGradient" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f9fbff" />
+      <stop offset="100%" stop-color="#edf1ff" />
+    </linearGradient>
+    <style>
+      .card {
+        fill: url(#cardGradient);
+        stroke: #aeb9d6;
+        stroke-width: 1.5;
+        rx: 16;
+        ry: 16;
+      }
+      .title {
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        fill: #102043;
+      }
+      .columns {
+        font-family: "Fira Code", "Consolas", monospace;
+        font-size: 16px;
+        fill: #314163;
+        letter-spacing: 0.03em;
+      }
+      .rows {
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        font-size: 15px;
+        fill: #405479;
+      }
+      .label {
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        fill: #102043;
+      }
+      .note {
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        font-size: 14px;
+        fill: #5a6485;
+      }
+      .arrow {
+        stroke: #5b6b93;
+        stroke-width: 2;
+        marker-end: url(#arrowHead);
+      }
+    </style>
+    <marker id="arrowHead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <polygon points="0 0, 10 5, 0 10" fill="#5b6b93" />
+    </marker>
+  </defs>
+
+  <rect x="60" y="70" width="280" height="200" class="card" />
+  <text x="80" y="110" class="title">departments</text>
+  <text x="80" y="140" class="columns">id | name</text>
+  <text x="80" y="170" class="rows">1  | Sprzedaż</text>
+  <text x="80" y="195" class="rows">2  | Inżynieria</text>
+  <text x="80" y="220" class="rows">3  | Operacje</text>
+
+  <rect x="370" y="90" width="560" height="290" class="card" />
+  <text x="400" y="140" class="title">employees</text>
+  <text x="400" y="170" class="columns">id | first_name | last_name | department_id | salary</text>
+  <text x="400" y="205" class="rows">1  | Anna   | Nowak  | 1 | 7200</text>
+  <text x="400" y="232" class="rows">2  | Marek  | Kowalski | 1 | 6800</text>
+  <text x="400" y="259" class="rows">3  | Zofia  | Mazur | 2 | 9800</text>
+  <text x="400" y="286" class="rows">4  | Piotr  | Lis | 2 | 9100</text>
+  <text x="400" y="313" class="rows">5  | Karolina | Sikora | 2 | 8400</text>
+  <text x="400" y="340" class="rows">6  | Tomasz | Wróbel | 3 | 6300</text>
+  <text x="400" y="367" class="rows">7  | Ewa    | Pawlak | 3 | 6100</text>
+
+  <rect x="150" y="430" width="780" height="260" class="card" />
+  <text x="180" y="480" class="title">timesheets</text>
+  <text x="180" y="510" class="columns">id | employee_id | project_name           | hours</text>
+  <text x="180" y="540" class="rows">1  | 1 | CRM 2.0                  | 35</text>
+  <text x="180" y="564" class="rows">2  | 1 | CRM 2.0                  | 12</text>
+  <text x="180" y="588" class="rows">3  | 2 | CRM 2.0                  | 28</text>
+  <text x="180" y="612" class="rows">4  | 3 | Silnik rekomendacji       | 42</text>
+  <text x="180" y="636" class="rows">5  | 3 | Aplikacja mobilna         | 18</text>
+  <text x="180" y="660" class="rows">6  | 4 | Silnik rekomendacji       | 44</text>
+  <text x="550" y="540" class="rows">7  | 4 | Billing                 | 16</text>
+  <text x="550" y="564" class="rows">8  | 5 | Aplikacja mobilna         | 41</text>
+  <text x="550" y="588" class="rows">9  | 6 | Optymalizacja dostaw      | 23</text>
+  <text x="550" y="612" class="rows">10 | 6 | System magazynowy         | 27</text>
+  <text x="550" y="636" class="rows">11 | 7 | Optymalizacja dostaw      | 26</text>
+  <text x="550" y="660" class="rows">12 | 7 | System magazynowy         | 19</text>
+
+  <line x1="340" y1="190" x2="370" y2="210" class="arrow" />
+
+  <line x1="650" y1="380" x2="650" y2="430" class="arrow" />
+
+  <text x="60" y="35" class="label">Schemat bazy danych — zadanie QA-03</text>
+  <text x="60" y="58" class="note">Relacje: employees.department_id → departments.id, timesheets.employee_id → employees.id</text>
+</svg>
+
+
