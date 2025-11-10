@@ -1,7 +1,7 @@
 # QA-01 Formularz wysyłki – zadanie testowe
 
 W tym zadaniu przedstawiamy prostą aplikację przeglądarkową, która symuluje proces rejestracji przesyłki kurierskiej. 
-Zadanie polega na ręcznym przetestowaniu działania formularza oraz odnalezieniu błędów (w aplikacji przewidziano 12 celowych błędów).
+Zadanie polega na manualnym przetestowaniu działania formularza oraz odnalezieniu błędów (w aplikacji przewidziano 12 celowych błędów).
 
 ## Wymagania biznesowe i zasady walidacji
 
