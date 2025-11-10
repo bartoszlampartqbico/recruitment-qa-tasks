@@ -72,6 +72,7 @@ textarea {
   border: 1px solid #c9d4ef;
   transition: border-color 0.2s, box-shadow 0.2s;
   background: #fff;
+  color: #000;
 }
 
 input:focus,
