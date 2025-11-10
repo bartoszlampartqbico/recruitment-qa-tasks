@@ -1,4 +1,4 @@
-# Zadanie QA-03 — Analiza zapytań SQL
+# Zadanie QA-03 — Tworzenie zapytań SQL
 
 ## Cel zadania
 Sprawdzamy, czy kandydat potrafi zaprojektować zapytania SQL wykorzystując `JOIN`, agregację (`GROUP BY`, `HAVING`) oraz sortowanie wyników. Zamiast przygotowanego środowiska, przekazujemy schemat bazy i próbkę danych w formie grafiki — kandydat powinien pracować we własnym narzędziu (np. ulubiony edytor, klient SQL, arkusz kalkulacyjny).

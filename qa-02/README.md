@@ -1,4 +1,4 @@
-# QA-02 Zgłoszenie do windykacji - zadanie testowe
+# QA-02 Tworzenie scenariuszy testowych - Zgłoszenie do windykacji - zadanie testowe
 
 ## Cel aplikacji
 
