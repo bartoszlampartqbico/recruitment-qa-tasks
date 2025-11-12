@@ -1,7 +1,7 @@
 # QA-01 Przeprowadzanie testów manualnych - Formularz wysyłki – zadanie testowe
 
 W tym zadaniu przedstawiamy prostą aplikację przeglądarkową, która symuluje proces rejestracji przesyłki kurierskiej. 
-Zadanie polega na manualnym przetestowaniu działania formularza oraz odnalezieniu błędów (w aplikacji przewidziano 13 celowych błędów).
+Zadanie polega na manualnym przetestowaniu działania formularza oraz odnalezieniu błędów (wystarczy wskazać i opisać kilka znalezionych błędów). 
 
 ## Wymagania biznesowe i zasady walidacji
 
